@@ -1,0 +1,407 @@
+
+main {
+  width: 95%;
+  margin: 0px auto;
+}
+.stepper-panel {
+  margin-top: 24px;
+  @include desktop {
+    width: 50%;
+    margin: 64px 0px 64px 0px;
+  }
+  &__title {
+    @include desktop {
+      font-size: 32px;
+    }
+  }
+  &__wrapper {
+    width: 100%;
+    @include d-flex-space-between;
+    margin: 24px 0px;
+    .step {
+      position: relative;
+      @include d-flex-space-between;
+      text-align: center;
+      @include stepNumber(3, white);
+
+      &.checked .step__circle::after {
+        content: "\2714";
+      }  
+      &.checked, &.active {
+        .step__circle {
+          background-color: $step-color;
+        }
+      }
+      &__circle {
+        display: inline-block;
+        @include w-h(32px, 32px);
+        border-radius:32px;
+        background-color: $step-color;
+        @include desktop {
+          @include w-h(24px, 24px);
+        }
+        &--unselect {
+          background-color: white;
+          border: 1px solid $stepper-satus-color;
+        }
+      }
+      &__status {
+        display: none;
+        @include desktop {
+          display: block;
+          margin-left: 12px;
+          letter-spacing: 1px;
+        &--unselect {
+          color: $stepper-satus-color;
+        }  
+        }
+      }
+      &__line {
+        display: block;
+        position: absolute;
+        @include w-h(70px, 2px);
+        left: -90px;
+        background-color: black;
+        &--unselect {
+          background-color: $stepper-line-color;
+        }
+      }
+    }
+    .step--unselect {
+      @include stepNumber(3, $stepper-satus-color);
+    }
+  }
+}
+
+
+
+.form {
+  @include desktop {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(5, 100px);
+  }
+  .part {
+    grid-column: 1/7;
+    grid-row: 1/3;
+  }
+  .part__title {
+    margin-bottom: 24px;
+  }
+  .product-panel {
+    grid-column: 8/13;
+    grid-row: 1/5;
+  }
+  .btn {
+    grid-column: 1/7;
+    grid-row: 4/5;
+  }
+
+}
+
+// form 通用樣式
+.form-row {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+  > label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  > input {
+    padding-left: 12px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+  > select {
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: white;
+  }
+}
+
+// 步驟1
+.add-panel {
+  max-width: 540px;
+  @include d-flex-space-between;
+  flex-flow: row wrap;
+  .form-row:nth-child(1) {
+    width: 35%; 
+    .sex {
+      @include w-h(100%, 40px);
+      padding-left: 10px;
+    }
+    @include desktop {
+      width: 30%;
+    }
+  }
+  .form-row:nth-child(2) {
+      width: 60%;
+    .fname {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 65%;
+    }
+  }
+  .form-row:nth-child(3) {
+    width: 100%;
+    .phone {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 43%;
+    }
+  }
+  .form-row:nth-child(4) {
+    width: 100%;
+    .email {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 52%;
+    }
+  }
+  .form-row:nth-child(5) {
+    width: 100%;
+    .city {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 30%;
+    }
+  }
+  .form-row:nth-child(6) {
+    width: 100%;
+    .address {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 65%;
+    }
+  }
+}
+
+// 步驟2
+.ship-panel {
+  height: 144px;
+  .form-check {
+    height: 60px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    @include d-flex-space-around;
+    &:first-child {
+      margin-bottom: 24px;
+    }
+    &__label {
+      font-size: 14px;
+    }
+    &__input {
+      @include w-h(20px, 20px);
+    }
+    &__info {
+      font-size: 12px;
+      display: block;
+    }
+    &__price {
+      font-size: 12px;
+      align-self: start;
+      margin-top: 10.5px;
+    }
+  }
+}
+// 步驟3
+.pay-panel {
+  max-width: 540px;
+  @include d-flex-space-between;
+  flex-flow: row wrap;
+  .form-row:nth-child(1) {
+    width: 100%; 
+    .card-name {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 30%;
+    }
+  }
+  .form-row:nth-child(2) {
+      width: 100%;
+    .card-number {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 65%;
+    }
+  }
+  .form-row:nth-child(3) {
+    width: 50%;
+    .card-date {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 43%;
+    }
+  }
+  .form-row:nth-child(4) {
+    width: 40%;
+    .card-code {
+      @include w-h(100%, 40px);
+    }
+    @include desktop {
+      width: 52%;
+    }
+  }
+}
+// 商品欄位
+.product-panel {
+  // max-width: 440px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 16px;
+  padding: 8px 16px;
+  @include desktop {
+    margin-top: -100px;
+    padding-top: 24px;
+  }
+  .product-title {
+    visibility: hidden;
+    @include desktop {
+      visibility: visible;
+      padding-bottom: 24px;
+    }
+  }
+  .product-list {
+    width: 100%;
+    .product__item {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 12px;
+      @include desktop {
+        padding-bottom: 24px;
+      }
+    &:first-child {
+      margin-bottom: 16px;
+    }
+      .product-img__wrapper {
+        max-width: 100px;
+        .product-img__img {
+          width: 100%;
+        }
+      }
+      .product__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-end;
+        gap: 20px;
+        flex: 1;
+        @include desktop-unset;
+        @include desktop {
+          flex: 1;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          justify-content: space-between;
+          padding-left: 20px;
+        }
+        // 商品數量按鈕
+        &__name {
+          grid-column: 1/4;
+        }
+        .icon-flex {
+          @include d-flex-center;
+          gap: 24px;
+          @include desktop {
+            grid-column: 1/3;
+          }
+          .icon-content {
+            position: relative;
+            @include d-flex-center;
+            .bi {
+              position: relative;
+              font-size: 24px;
+              color: #F0F0F5;
+              cursor: pointer;
+            }
+            .bi__bg {
+              position: absolute;
+              display: block;
+              width: 14px;
+              height: 14px;
+              background-color: black;
+              z-index: -1;
+            }
+          }
+        }
+        &__price {
+          grid-row: 1/1;
+          grid-column: 5/5;
+        }
+      }
+    
+    }
+
+  }
+}
+// 運費和小計
+.product__ship,
+.product__total {
+  @include d-flex-space-between;
+  padding: 16px 0px;
+  border-top: 1px solid lightgray;
+  @include desktop {
+    font-size: 14px;
+  }
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border:none;
+  margin-top: 24px;
+  border-top: 1px solid lightgray;
+  &__pre,
+  &__next {
+    border:none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    margin-top: 24px;
+    cursor: pointer;
+  }
+  &__pre[disabled] {
+    visibility: hidden;
+    display: none;
+  }
+
+  &--hide {
+    display: none;
+    @include desktop-unset;
+    @include desktop {
+      visibility: hidden;
+    }
+  }
+  
+  &__next {
+    background-color: $btn-color;
+    color: #fff;
+  }
+}
+// 使用JS控制按鈕狀態
+.btn--part1 {
+  @include w-h(100%, 46px);
+  @include desktop {
+    width: 33%;
+  }
+}
+.btn--part2 {
+  @include w-h(45%, 46px);
+  @include desktop {
+    width: 33%;
+  }
+}
+

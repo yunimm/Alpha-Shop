@@ -1,0 +1,46 @@
+footer {
+  @include phone {
+    display: none;
+  }
+  background-color: $footer-color;
+}
+.footer-max-w {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+.footer-wrapper {
+  width: 95%;
+  margin: 0 auto; 
+  height: 284px;
+  @include d-flex-space-between;
+  .footer-item-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 100px;
+    flex:1;
+  }
+  .footer-logo {
+    width: 175.49px;
+  }
+  .footer-item {
+    .footer-list {
+      display: flex;
+      flex-direction: column;
+      :not(:first-child) {
+        color: $footer-font-color;
+        font-weight: 300;
+      }
+      &__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+        letter-spacing: 0px;
+      }
+      &__icon {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+      }
+    }
+  }
+}
+

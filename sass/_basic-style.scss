@@ -1,0 +1,51 @@
+span,
+input,
+label,
+h1,
+h2,
+h3,
+li,
+p,
+a 
+{
+  font-family: 'Inter', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+span,
+input,
+label,
+button,
+li,
+p,
+a 
+{
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3
+{
+  letter-spacing: 0.5px;
+}
+
+a:visited, a:focus{
+  color: $primary-color;
+}
+
+input {
+  border: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+
+}
+

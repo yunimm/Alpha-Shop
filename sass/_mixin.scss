@@ -1,0 +1,84 @@
+// 桌機板RWD
+@mixin desktop {
+  @media screen and (min-width: 375px) {
+    @content;
+  }
+}
+// 手機板RWD
+@mixin phone {
+  @media screen and (max-width:768px) {
+    @content;
+  }
+}
+// 清除手機板樣式
+@mixin desktop-unset {
+  @media screen and (min-width: 375px) {
+    all: unset;
+  }
+}
+
+// flex置中對齊
+@mixin d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// flex分散對齊
+@mixin d-flex-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+// flex首尾對齊
+@mixin d-flex-space-between {
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+
+// 定位上下左右
+@mixin p-absolute($top-v, $bottom-v, $left-v, $right-v) {
+  position: absolute;
+  top: $top-v;
+  bottom: $bottom-v;
+  left: $left-v;
+  right: $right-v;
+}
+// Y軸變形
+@mixin t-Y($y-value) {
+  transform: translateY($y-value);
+}
+// X軸變形
+@mixin t-X($x-value) {
+  transform: translateX($x-value);
+}
+
+// step數字迴圈
+@mixin stepNumber($num, $color) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .step__circle::after {
+      content:'#{$i}';
+      color: $color;
+      line-height: 32px;
+      @include desktop {
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+
+// 寬高設定
+@mixin w-h($widthValue, $heightValue) {
+  width: $widthValue;
+  height: $heightValue;
+}
+
+// add-panel/pay-panel排版
+@mixin flex-panel {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
