@@ -9,14 +9,25 @@ const productBtn = document.querySelectorAll('.icon-content')
 const productTotal = document.querySelector('.productTotal')
 // 取得step狀態列
 const steps = document.querySelectorAll('.step')
+// 取得form
 const form = document.querySelector('.form')
+// 取得part
 const formParts = form.querySelectorAll('.part')
+// 取得dhl運費
+const ship = document.querySelector('.ship-panel')
 let step = 0
 let total = 0
 
-// 點選下一步按鈕
-formBtn.addEventListener('click', clickFormBtn)
+// 點擊運送方式，計算運費
+ship.addEventListener('click',addShipPrice)
 
+// 點選下一步按鈕,切換form內容
+formBtn.addEventListener('click', clickFormBtn)
+// 點擊+ - 號，計算商品金額
+productBtn.forEach(function clickProductBtn(btn) {
+  btn.addEventListener('click', addNumber)
+})
+// 切換form內容
 function clickFormBtn(e) {  
   const nowStep = steps[step]
   if(e.target.matches('.btn__next')) {
@@ -36,9 +47,30 @@ function clickFormBtn(e) {
     formParts[step - 1].classList.toggle('d-none')
     step -= 1
   }
+  // 改變下一步按鈕class名稱
   setBtnClass()
 }
+// 計算商品金額
+function addNumber(e) {
+  const target = e.target
+  const number = target.parentNode.parentNode.children[1]
+  const price = target.parentNode.parentNode.parentNode.children[2].innerText
+  const priceNum = Number(price.replace(/[&\|\\\*^%$#@\-]/g,""))
+  let numberBox = number.innerText
+  if(target.matches('.bi-plus-circle-fill')) {
+    numberBox ++
+    total += priceNum 
+  } else if(target.matches('.bi-dash-circle-fill')) {
+    if (numberBox > 0) {
+      numberBox --
+      total -= priceNum 
+    } 
+  }
+  number.innerText = numberBox
+  productTotal.innerText = '$' + total.toLocaleString()
 
+}
+// 改變下一步按鈕class名稱
 function setBtnClass() {
   if(step === 0) {
     // preBtn.classList.remove('btn--hide')
@@ -53,36 +85,20 @@ function setBtnClass() {
     nextBtn.innerText = '下一步'
   }
 }
-
-
-
-// 點擊+ - 號會執行addNumber
-productBtn.forEach(function clickProductBtn(btn) {
-  btn.addEventListener('click', addNumber)
-})
-
-// 點擊加號+1，點擊減號-1
-function addNumber(e) {
-  const target = e.target
-  const number = target.parentNode.parentNode.children[1]
-  const price = target.parentNode.parentNode.parentNode.children[2].innerText
-  // console.log(price)
-  const priceNum = Number(price.replace(/[&\|\\\*^%$#@\-]/g,""))
-  let numberBox = number.innerText
-  if(target.matches('.bi-plus-circle-fill')) {
-    numberBox ++
-    total += priceNum 
-  } else if(target.matches('.bi-dash-circle-fill')) {
-    if (numberBox > 0) {
-      numberBox --
-      total -= priceNum 
-    } 
+// 計算運費
+function addShipPrice(e) {
+  const shipPrice = 500
+  if (e.target.matches('#flexRadioDefaultDHL')) {
+    total += shipPrice
+  } else if(e.target.matches('#flexRadioDefault')){
+    if(total > 0) {
+      total -= shipPrice
+    }
   }
-  number.innerText = numberBox
-  productTotal.innerText = '$' + total
-
+  productTotal.innerText = '$' + total.toLocaleString()
 }
 
-// 步驟2，點擊DHL貨運，運費和總金額增加
+
+
 
 
