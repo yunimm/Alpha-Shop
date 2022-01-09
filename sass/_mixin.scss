@@ -57,7 +57,9 @@
 // step數字迴圈
 @mixin stepNumber($num, $color) {
   @for $i from 1 through $num {
-    &:nth-child(#{$i}) .step__circle::after {
+    &:nth-child(#{($i*2)-1}) .step__circle::after {
+      font-family: 'Inter', sans-serif;
+      display: block;
       content:'#{$i}';
       color: $color;
       line-height: 32px;
