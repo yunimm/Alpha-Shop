@@ -65,15 +65,15 @@
               <span class="step__circle"></span>
               <span class="step__status">寄送地址</span>
             </div>
+            <span class="step__line"></span>
             <div class="step step--unselect">
               <span class="step__circle step__circle--unselect"></span>
               <span class="step__status step__status--unselect">運送方式</span>
-              <span class="step__line"></span>
             </div>
+            <span class="step__line step__line--unselect"></span>
             <div class="step step--unselect">
               <span class="step__circle step__circle--unselect"></span>
               <span class="step__status step__status--unselect">付款資訊</span>
-              <span class="step__line step__line--unselect"></span>
             </div>
           </div>
         </div>
@@ -119,20 +119,20 @@
           <div class="part d-none">
               <h2 class="part__title">運送方式</h2>
               <div class="ship-panel">
-                <div class="form-check">
-                    <input class="form-check__input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <div class="form-check ship-default">
+                    <input class="form-check__input" type="radio" name="flexRadioDefault" id="flexRadioDefault">
                     <div class="form-check__title">
-                      <label class="form-check__label" for="flexRadioDefault1">
+                      <label class="form-check__label" for="flexRadioDefault">
                         標準運送
                       </label>
                       <span class="form-check__info">約3~7個工作天</span>
                     </div>
                     <span class="form-check__price">免費</span>
                 </div>
-                <div class="form-check">
-                  <input class="form-check__input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <div class="form-check ship-dhl">
+                  <input class="form-check__input" type="radio" name="flexRadioDefault" id="flexRadioDefaultDHL">
                   <div class="form-check__title">
-                    <label class="form-check__label" for="flexRadioDefault1">
+                    <label class="form-check__label" for="flexRadioDefaultDHL">
                       DHL貨運
                     </label>
                     <span class="form-check__info">48小時內送達</span>
@@ -213,7 +213,7 @@
               </div>
               <div class="product__total">
                 <span class="product__total__title">小計</span>
-                <span class="product__total__title productTotal">0</span>
+                <span class="product__total__title productTotal">$0</span>
               </div>
             </div>
           </div>
