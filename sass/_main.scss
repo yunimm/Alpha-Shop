@@ -16,20 +16,28 @@ main {
   }
   &__wrapper {
     width: 100%;
-    @include d-flex-space-between;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    // grid-auto-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    column-gap: 40px;
     margin: 24px 0px;
+    @include desktop {
+      column-gap: 0px;
+    }
     .step {
       position: relative;
       @include d-flex-space-between;
       text-align: center;
       @include stepNumber(3, white);
-
       &.checked .step__circle::after {
         content: "\2714";
       }  
       &.checked, &.active {
         .step__circle {
           background-color: $step-color;
+
         }
       }
       &__circle {
@@ -42,7 +50,7 @@ main {
         }
         &--unselect {
           background-color: white;
-          border: 1px solid $stepper-satus-color;
+          border: 1px solid $stepper-status-color;
         }
       }
       &__status {
@@ -52,26 +60,46 @@ main {
           margin-left: 12px;
           letter-spacing: 1px;
         &--unselect {
-          color: $stepper-satus-color;
+          color: $stepper-status-color;
         }  
         }
       }
-      &__line {
-        display: block;
-        position: absolute;
-        @include w-h(70px, 2px);
-        left: -90px;
-        background-color: black;
-        &--unselect {
-          background-color: $stepper-line-color;
-        }
+    &__line {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: black;
+      @include desktop {
+        width: 50%;
+      }
+      &--unselect {
+        background-color: $stepper-line-color;
       }
     }
+
+    }
     .step--unselect {
-      @include stepNumber(3, $stepper-satus-color);
+      @include stepNumber(3, $stepper-status-color);
     }
   }
 }
+
+// .step:nth-child(2n+1) .step__circle::after {
+//   content:'1';
+//   color: red;
+//   line-height: 32px;
+// }
+// .step:nth-child(2n+1) .step__circle::after {
+//   content:'2';
+//   color: red;
+//   line-height: 32px;
+// }
+// .step:nth-child(2n+1) .step__circle::after {
+//   content:'3';
+//   color: red;
+//   line-height: 32px;
+// }
+
 
 
 
