@@ -83,5 +83,6 @@ function addNumber(e) {
 
 }
 
+// 步驟2，點擊DHL貨運，運費和總金額增加
 
 
