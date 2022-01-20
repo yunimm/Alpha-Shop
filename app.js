@@ -50,10 +50,13 @@ function clickFormBtn(e) {
   // 改變下一步按鈕class名稱
   setBtnClass()
 }
+
 // 計算商品金額
 function addNumber(e) {
   const target = e.target
+  // 商品數量
   const number = target.parentNode.parentNode.children[1]
+  // 商品價格
   const price = target.parentNode.parentNode.parentNode.children[2].innerText
   const priceNum = Number(price.replace(/[&\|\\\*^%$#@\-]/g,""))
   let numberBox = number.innerText
@@ -73,8 +76,6 @@ function addNumber(e) {
 // 改變下一步按鈕class名稱
 function setBtnClass() {
   if(step === 0) {
-    // preBtn.classList.remove('btn--hide')
-    // preBtn.classList.add('btn--part1')
     preBtn.classList.add('btn--hide')
   } else {
     preBtn.classList.remove('btn--hide')
