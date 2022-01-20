@@ -11,6 +11,11 @@
 5. footer：在小螢幕不顯示。
 6. RWD，行動版和桌機版板面切換
 
+## 開發工具
++ HTML
++ JavaScript
++ SCSS
+
 ## Installing - 專案安裝流程
 1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
