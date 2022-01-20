@@ -84,25 +84,6 @@ main {
   }
 }
 
-// .step:nth-child(2n+1) .step__circle::after {
-//   content:'1';
-//   color: red;
-//   line-height: 32px;
-// }
-// .step:nth-child(2n+1) .step__circle::after {
-//   content:'2';
-//   color: red;
-//   line-height: 32px;
-// }
-// .step:nth-child(2n+1) .step__circle::after {
-//   content:'3';
-//   color: red;
-//   line-height: 32px;
-// }
-
-
-
-
 .form {
   @include desktop {
     width: 100%;
