@@ -7,6 +7,8 @@ const nextBtn = document.querySelector('.btn__next')
 const productBtn = document.querySelectorAll('.icon-content')
 // 取得總金額
 const productTotal = document.querySelector('.productTotal')
+// 取得運費金額
+const shipWords = document.querySelector('.shipWords')
 // 取得step狀態列
 const steps = document.querySelectorAll('.step')
 // 取得form
@@ -90,9 +92,14 @@ function setBtnClass() {
 function addShipPrice(e) {
   const shipPrice = 500
   if (e.target.matches('#flexRadioDefaultDHL')) {
+    // shipWords.innerText = '$500'
+    console.log(shipWords)
+    shipWords.innerText = '$500'
     total += shipPrice
+
   } else if(e.target.matches('#flexRadioDefault')){
     if(total > 0) {
+      shipWords.innerText = '免費'
       total -= shipPrice
     }
   }
